@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+version = "1.0"
 
 android {
     compileSdkVersion 23
@@ -23,4 +27,83 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
 
+}
+
+def siteUrl = 'https://github.com/starbuilder/MyLibrary'                    // #CONFIG# // project homepage
+def gitUrl = 'https://github.com/starbuilder/MyLibrary.git'                 // #CONFIG# // project git url
+def issueUrl = 'https://github.com/starbuilder/MyLibrary/issues'            // #CONFIG# // project issue url
+group = "starbuilder.github.io"                                           // #CONFIG# // Maven Group ID for the artifact (pageckage name is ok)
+
+install {
+    repositories.mavenInstaller {
+        // generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'Less Code For Android'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'starbuilder'
+                        name 'andyli'
+                        email 'yungyu405728@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+
+//bintray upload
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "SpiderLibrary"                                                   // #CONFIG# project name in jcenter
+        desc = 'A helpful library for Android named Polaris.'
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        issueTrackerUrl = issueUrl
+        licenses = ["Apache-2.0"]
+        labels = ['android']
+        publish = true
+        publicDownloadNumbers = true
+    }
 }

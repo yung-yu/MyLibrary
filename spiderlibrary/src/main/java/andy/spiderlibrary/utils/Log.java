@@ -48,6 +48,7 @@ public class Log {
                  fileHandler.setFormatter(formatter);
                  fileHandler.setLevel(Level.ALL);
                  logger.addHandler(fileHandler);
+
              } catch (IOException e) {
                  e.printStackTrace();
                  android.util.Log.e(TAG,e.toString());
