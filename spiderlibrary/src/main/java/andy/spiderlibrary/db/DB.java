@@ -63,7 +63,7 @@ public class DB {
         this.DATAVERSION = dbVersion;
         dbHelper = new DBHelper(context ,onDBChangeListener);
     }
-    public  String dropTable(Class<?> cls){
+    public static String dropTable(Class<?> cls){
         try {
             String sql = "";
            String DROP_TABLE = "DROP TABLE IF EXISTS ";
@@ -80,7 +80,7 @@ public class DB {
         return null;
     }
 
-    public  String createTable(Class<?> cls){
+    public static  String createTable(Class<?> cls){
         try {
             String sql = "";
             String fieldSql = "";
