@@ -1,5 +1,15 @@
 # MyLibrary
 
+##引用方法
+###Add Gradle dependency:
+```
+dependencies {
+    compile 'starbuilder.github.io:spiderlibrary:1.5';
+}
+
+```
+
+
 ##1.資料庫
 ###使用annotation來同時建立物件和資料庫Table。
 ###簡單物件範例
