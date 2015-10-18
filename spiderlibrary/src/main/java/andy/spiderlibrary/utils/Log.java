@@ -26,6 +26,12 @@ public class Log {
 
     private static  boolean IS_DEBUG = false;
 
+    /**
+     * Log 記錄初始化
+     * @param logName  log的儲存檔案名稱
+     * @param logFilePath logFilePath/log的儲存檔案路徑
+     * @param tag log顯示tag
+     */
     public static void createLogger(String logName,String logFilePath,String tag){
         IS_DEBUG = true;
         LOG_FILE = logName+"_%g.log";
