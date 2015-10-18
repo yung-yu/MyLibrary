@@ -17,14 +17,22 @@ import java.util.logging.SimpleFormatter;
  */
 public class Log {
     static Logger logger;
-    private static final String EXCEPTION_START = "*******EXCEPTION START*********";
-    private static final String EXCEPTION_END = "*******EXCEPTION END*********";
-    private static final String TAG = "youtubelog";
-    private static final String LOG_FILE = "debug_%g.log";
-    private static final String LOG_FILEPATH = "/youtubedownload/log/";
+    private static final String EXCEPTION_START = "****************EXCEPTION START****************";
+    private static final String EXCEPTION_END = "****************EXCEPTION END****************";
+    private static  String TAG = "andylog";
+    private static  String LOG_FILE = "andy_%g.log";
+    private static  String LOG_FILEPATH = "/log/";
 
 
-    private static final boolean IS_DEBUG = true;
+    private static  boolean IS_DEBUG = false;
+
+    public static void createLogger(String logName,String logFilePath,String tag){
+        IS_DEBUG = true;
+        LOG_FILE = logName+"_%g.log";
+        LOG_FILEPATH = logFilePath+"/log/";
+        TAG = tag;
+    }
+
     private static SimpleFormatter formatter = new SimpleFormatter(){
         @Override
         public String format(LogRecord r) {
@@ -63,7 +71,7 @@ public class Log {
         className = className.substring(className.lastIndexOf(".")+1);
         String methodName =  elements[4].getMethodName();
 
-        return "["+ Thread.currentThread().getId()+"]"+"["+className+"]"+"["+methodName+"]"+"["+elements[4].getLineNumber()+"]-";
+        return "-["+ Thread.currentThread().getId()+"]"+"["+className+"]"+"["+methodName+"]"+"["+elements[4].getLineNumber()+"]-";
     }
     public static void d(String msg){
         if(!IS_DEBUG){

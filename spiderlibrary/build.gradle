@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.0"
+version = "1.2"
 
 android {
     compileSdkVersion 23
@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 12
+        versionName "1.2"
     }
     buildTypes {
         release {
@@ -40,7 +40,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'Less Code For Android'
+                name 'my library For Android'
                 url siteUrl
                 licenses {
                     license {
