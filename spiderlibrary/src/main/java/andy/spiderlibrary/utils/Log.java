@@ -107,6 +107,7 @@ public class Log {
             android.util.Log.e(TAG,e.toString());
         }
     }
+
     public static void e(String msg){
         if(!IS_DEBUG){
             return;

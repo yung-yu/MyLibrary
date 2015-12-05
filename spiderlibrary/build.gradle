@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.5"
+version = "1.7"
 
 android {
     compileSdkVersion 23
@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 15
-        versionName "1.5"
+        versionCode 16
+        versionName "1.7s"
     }
     buildTypes {
         release {
@@ -32,7 +32,7 @@ dependencies {
 def siteUrl = 'https://github.com/starbuilder/MyLibrary'                    // #CONFIG# // project homepage
 def gitUrl = 'https://github.com/starbuilder/MyLibrary.git'                 // #CONFIG# // project git url
 def issueUrl = 'https://github.com/starbuilder/MyLibrary/issues'            // #CONFIG# // project issue url
-group = "starbuilder.github.io"                                           // #CONFIG# // Maven Group ID for the artifact (pageckage name is ok)
+ group = "starbuilder.github.io"                                           // #CONFIG# // Maven Group ID for the artifact (pageckage name is ok)
 
 install {
     repositories.mavenInstaller {
@@ -97,7 +97,7 @@ bintray {
     pkg {
         repo = "maven"
         name = "SpiderLibrary"                                                   // #CONFIG# project name in jcenter
-        desc = 'A helpful library for Android named Polaris.'
+        desc = 'A helpful librarys.'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         issueTrackerUrl = issueUrl
